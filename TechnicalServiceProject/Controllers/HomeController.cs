@@ -8,7 +8,7 @@ namespace TechnicalServiceProject.Controllers
         /// deneme 1
     {
         private readonly ILogger<HomeController> _logger;
-
+        //deneme2
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
