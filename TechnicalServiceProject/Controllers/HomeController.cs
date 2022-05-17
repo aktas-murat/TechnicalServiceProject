@@ -5,6 +5,7 @@ using TechnicalServiceProject.Models;
 namespace TechnicalServiceProject.Controllers
 {
     public class HomeController : Controller
+        /// deneme 1
     {
         private readonly ILogger<HomeController> _logger;
 
