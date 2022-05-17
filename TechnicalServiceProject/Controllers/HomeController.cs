@@ -13,7 +13,7 @@ namespace TechnicalServiceProject.Controllers
         {
             _logger = logger;
         }
-
+        //deneme 3
         public IActionResult Index()
         {
             return View();
