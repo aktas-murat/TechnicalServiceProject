@@ -42,5 +42,9 @@ namespace TechnicalServiceProject.Controllers
         {
             return View();
         }
+        public IActionResult Report()
+        {
+            return View();
+        }
     }
 }
