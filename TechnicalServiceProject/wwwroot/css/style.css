@@ -585,3 +585,7 @@
 .footer .copyright a {
     color: var(--light);
 }
+
+ .data-wow-delay {
+    margin-right: 10px;
+}
