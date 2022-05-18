@@ -12,5 +12,6 @@ namespace TechnicalServiceProject.Controllers
         {
             return View();
         }
+
     }
 }
