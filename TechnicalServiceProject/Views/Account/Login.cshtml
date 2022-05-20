@@ -45,7 +45,10 @@
                 </div>
 
                 <!-- Submit button -->
-                <input asp-controller="Home" asp-action="Index" type="submit" class="col-4 offset-4 btn btn-primary btn-block mb-4" value="Giriş Yap">
+                <div class="form-footer">
+                    <button type="submit" class="col-4 offset-4 btn btn-primary btn-block">Giriş Yap</button>
+                </div>
+                <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
 
                 <!-- Register buttons -->
                 <div class="text-center">
