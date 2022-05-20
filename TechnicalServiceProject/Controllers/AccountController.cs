@@ -13,7 +13,7 @@ namespace TechnicalServiceProject.Controllers
         private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager,   
+        public AccountController(UserManager<ApplicationUser> userManager,
             RoleManager<ApplicationRole> roleManager,
             SignInManager<ApplicationUser> signInManager)
         {
@@ -22,22 +22,28 @@ namespace TechnicalServiceProject.Controllers
             _signInManager = signInManager;
             CheckRoles();
         }
-            private void CheckRoles()
-    {
-        foreach (var item in Roles.RoleList)
+        private void CheckRoles()
         {
-            if (_roleManager.RoleExistsAsync(item).Result)
-                continue;
-            var result = _roleManager.CreateAsync(new ApplicationRole()
+            foreach (var item in Roles.RoleList)
             {
-                Name = item
-            }).Result;
+                if (_roleManager.RoleExistsAsync(item).Result)
+                    continue;
+                var result = _roleManager.CreateAsync(new ApplicationRole()
+                {
+                    Name = item
+                }).Result;
+            }
         }
-    }
-        public IActionResult Login()
+        [HttpGet]
+        public IActionResult Login(string? returnUrl = null)
         {
-            return View();
+            var model = new LoginViewModel()
+            {
+                ReturnUrl = returnUrl
+            };
+            return View(model);
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -46,23 +52,31 @@ namespace TechnicalServiceProject.Controllers
                 return View(model);
             }
 
-            var user = await _userManager.FindByNameAsync(model.UserName);
-
-            var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, true);
+            var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, true);
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                var user = _userManager.FindByNameAsync(model.UserName).Result;
+                HttpContext.Session.SetString("User", System.Text.Json.JsonSerializer.Serialize(new
+                {
+                    user.Name,
+                    user.Surname,
+                    user.Email
+                }));
+                model.ReturnUrl ??= Url.Content("~/");
+
+                return LocalRedirect(model.ReturnUrl);
             }
             else if (result.IsLockedOut)
             {
-                //TODO: Kilitlenmişse ne yapılacağı
+
             }
             else if (result.RequiresTwoFactor)
             {
-                //TODO: 2fa yönlendirmesi yapılacak
+
             }
-            ModelState.AddModelError(string.Empty, "Email veya şifre hatalı");
+
+            ModelState.AddModelError(string.Empty, "Username or password is incorrect");
             return View(model);
         }
         public IActionResult Register()
