@@ -1,4 +1,5 @@
-﻿@{
+﻿@model LoginViewModel
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -13,17 +14,18 @@
 
             <h1 class="text-primary text-center">Raijin</h1>
 
-            <form>
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly"></div>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example1">Email adresi</label>
-                    <input type="email" id="form2Example1" class="form-control" />
+                    <label class="form-label" asp-for="Email">Email adresi</label>
+                    <input type="email" asp-for="Email" class="form-control" />
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example2">Şifre</label>
-                    <input type="password" id="form2Example2" class="form-control" />
+                    <label class="form-label" asp-for="Password">Şifre</label>
+                    <input type="password" asp-for="Password" class="form-control" />
                 </div>
 
                 <!-- 2 column grid layout for inline styling -->
@@ -43,7 +45,7 @@
                 </div>
 
                 <!-- Submit button -->
-                <button type="button" class="col-4 offset-4 btn btn-primary btn-block mb-4">Giriş Yap</button>
+                <input asp-controller="Home" asp-action="Index" type="submit" class="col-4 offset-4 btn btn-primary btn-block mb-4" value="Giriş Yap">
 
                 <!-- Register buttons -->
                 <div class="text-center">

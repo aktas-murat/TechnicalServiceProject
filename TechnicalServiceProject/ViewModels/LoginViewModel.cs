@@ -4,11 +4,16 @@ namespace TechnicalServiceProject.ViewModels
 {
     public class LoginViewModel
     {
-        [Display(Name = "Email Adresi")]
-        [Required(ErrorMessage = "Email adresi gereklidir.")]
+        [EmailAddress]
+        [Required(ErrorMessage = "E-Posta gereklidir.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Şifre gereklidir.")]
+        [Display(Name = "Kullanıcı Adı")]
+        [Required(ErrorMessage = "Kullanıcı adı alanı gereklidir.")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Şifre alanı gereklidir.")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Şifreniz minimum 6 karakterli olmalıdır!")]
         [Display(Name = "Şifre")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

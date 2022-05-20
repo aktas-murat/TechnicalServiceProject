@@ -1,9 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AdminTemplate.ViewModels;
+namespace TechnicalServiceProject.ViewModels;
 
 public class RegisterViewModel
 {
+    [Display(Name = "Kullanıcı Adı")]
+    [Required(ErrorMessage = "Kullanıcı adı gereklidir.")]
+    public string UserName { get; set; }
+
     [Display(Name = "Ad")]
     [Required(ErrorMessage = "Ad gereklidir.")]
     [StringLength(50)]
