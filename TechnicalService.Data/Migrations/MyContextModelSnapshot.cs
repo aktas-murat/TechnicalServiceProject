@@ -8,7 +8,7 @@ using TechnicalServiceProject.Data;
 
 #nullable disable
 
-namespace TechnicalServiceProject.Migrations
+namespace TechnicalService.Data.Migrations
 {
     [DbContext(typeof(MyContext))]
     partial class MyContextModelSnapshot : ModelSnapshot
@@ -17,7 +17,7 @@ namespace TechnicalServiceProject.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.4")
+                .HasAnnotation("ProductVersion", "6.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
