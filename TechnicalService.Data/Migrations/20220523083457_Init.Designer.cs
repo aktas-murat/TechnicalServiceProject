@@ -12,7 +12,7 @@ using TechnicalServiceProject.Data;
 namespace TechnicalService.Data.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220520094029_Init")]
+    [Migration("20220523083457_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
