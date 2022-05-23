@@ -3,34 +3,68 @@
     Layout = null;
 }
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <partial name="_MetaStyles"></partial>
 </head>
 <body>
 
-    <form asp-controller="Account" asp-action="Register" method="post">
-        <div asp-validation-summary="ModelOnly"></div>
-        <label asp-for="UserName"></label>
-        <input asp-for="UserName" />
-        <span asp-validation-for="UserName"></span><br>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span><br>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span><br>
-        <label asp-for="ConfirmPassword"></label>
-        <input asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword"></span><br>
-        <label asp-for="Name"></label>
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span><br>
-        <label asp-for="Surname"></label>
-        <input asp-for="Surname" />
-        <span asp-validation-for="Surname"></span><br>
-        <input type="submit" value="Kayıt ol" />
-    </form>
+    <div class="card offset-4 col-4 border-primary" style="margin-top:20px; margin-bottom:20px;">
+        <div class="card-body">
 
+            <h1 class="text-primary text-center">
+                <a asp-controller="Home" asp-action="Index">Raijin</a>
+            </h1>
+
+            <form asp-controller="Account" asp-action="Register" method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="Name">Ad</label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <!-- Surname input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="Surname">Soyad</label>
+                    <input asp-for="Surname" class="form-control" />
+                </div>
+                <!-- Username input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="UserName">Kullanıcı Adı</label>
+                    <input asp-for="UserName" class="form-control" />
+                </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="Email">Email adresi</label>
+                    <input type="email" asp-for="Email" class="form-control" />
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="Password">Şifre</label>
+                    <input type="password" asp-for="Password" class="form-control" />
+                </div>
+                <!-- ConfirmPassword input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="ConfirmPassword">Şifre Tekrarı</label>
+                    <input type="password" asp-for="ConfirmPassword" class="form-control" />
+                </div>
+
+                <!-- Submit button -->
+                <div class="form-footer" style="margin-bottom: 10px;">
+                    <input type="submit" class="col-4 offset-4 btn btn-primary btn-block" value="Kaydol" />
+                </div>
+                <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
+
+                <!-- Register buttons -->
+                <div class="text-center">
+                    <p>Zaten üye misiniz? <a asp-controller="Account" asp-action="Register">Giriş Yap</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <partial name="_Scripts"></partial>
 </body>
 </html>

@@ -12,7 +12,9 @@
     <div class="card offset-4 col-4 border-primary" style="margin-top:20px;">
         <div class="card-body">
 
-            <h1 class="text-primary text-center">Raijin</h1>
+            <h1 class="text-primary text-center">
+                <a asp-controller="Home" asp-action="Index">Raijin</a>
+            </h1>
 
             <form asp-controller="Account" asp-action="Login" method="post">
                 <div asp-validation-summary="ModelOnly"></div>
@@ -46,7 +48,7 @@
 
                 <!-- Submit button -->
                 <div class="form-footer">
-                    <input type="submit" class="col-4 offset-4 btn btn-primary btn-block" value="Giriş Yap"/>
+                    <input type="submit" class="col-4 offset-4 btn btn-primary btn-block" style="margin-bottom: 10px;" value="Giriş Yap" />
                 </div>
                 <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
 

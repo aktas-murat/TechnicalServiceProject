@@ -65,8 +65,7 @@ namespace TechnicalServiceProject.Controllers
                 }));
                 model.ReturnUrl ??= Url.Content("~/");
 
-                //return LocalRedirect(model.ReturnUrl);
-                return RedirectToAction("About", "Home");
+                return LocalRedirect(model.ReturnUrl);
             }
             else if (result.IsLockedOut)
             {
@@ -128,7 +127,7 @@ namespace TechnicalServiceProject.Controllers
 
                 //await _emailService.SendMailAsync(email);
                 //TODO: Login olma
-                return RedirectToAction("Login");
+                return RedirectToAction("Index", "Home");
             }
 
             var messages = string.Join("<br>", result.Errors.Select(x => x.Description));
