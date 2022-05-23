@@ -1,11 +1,11 @@
-﻿using TechnicalServiceProject.ViewModels;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using TechnicalServiceProject.Models.Identity;
-using TechnicalServiceProject.Models.Role;
-using TechnicalServiceProject.ViewModels;
+using TechnicalService.Core.Identity;
+using TechnicalService.Core.Role;
+using TechnicalService.Web.ViewModels;
 
-namespace TechnicalServiceProject.Controllers
+namespace TechnicalService.Web.Controllers
 {
     public class AccountController : Controller
     {
@@ -136,5 +136,12 @@ namespace TechnicalServiceProject.Controllers
             return View(model);
         }
 
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

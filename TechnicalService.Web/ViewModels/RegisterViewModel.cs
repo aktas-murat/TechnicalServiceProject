@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TechnicalServiceProject.ViewModels;
-
+namespace TechnicalService.Web.ViewModels
+{ 
 public class RegisterViewModel
 {
     [Display(Name = "Kullanıcı Adı")]
@@ -33,4 +33,5 @@ public class RegisterViewModel
     [DataType(DataType.Password)]
     [Compare("Password", ErrorMessage = "Şifreler uyuşmuyor!")]
     public string ConfirmPassword { get; set; }
+}
 }

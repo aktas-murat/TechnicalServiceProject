@@ -1,4 +1,4 @@
-namespace TechnicalServiceProject.Models
+namespace TechnicalService.Core.Models
 {
     public class ErrorViewModel
     {

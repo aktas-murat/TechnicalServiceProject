@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TechnicalServiceProject.Models.Identity;
+using TechnicalService.Core.Identity;
 
-namespace TechnicalServiceProject.Data
+namespace TechnicalService.Data.Data
 {
     public sealed class MyContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {

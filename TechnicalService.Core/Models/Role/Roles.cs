@@ -1,4 +1,4 @@
-﻿namespace TechnicalServiceProject.Models.Role
+﻿namespace TechnicalService.Core.Role
 {
     public static class Roles
     {

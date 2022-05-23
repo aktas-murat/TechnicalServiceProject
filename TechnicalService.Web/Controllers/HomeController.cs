@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using TechnicalServiceProject.Models;
+using TechnicalService.Core.Models;
 
-namespace TechnicalServiceProject.Controllers
+namespace TechnicalService.Web.Controllers
 {
     public class HomeController : Controller
         /// deneme 1

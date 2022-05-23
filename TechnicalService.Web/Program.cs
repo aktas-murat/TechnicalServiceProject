@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TechnicalServiceProject.Data;
-using TechnicalServiceProject.Models.Identity;
-
+using TechnicalService.Data.Data;
+using TechnicalService.Core.Identity;
 var builder = WebApplication.CreateBuilder(args);
 var con1 = builder.Configuration.GetConnectionString("con1");
 builder.Services.AddDbContext<MyContext>(options => options.UseSqlServer(con1));
