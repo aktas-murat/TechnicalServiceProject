@@ -1,0 +1,133 @@
+﻿@using TechnicalService.Core.Role
+
+@model ProfileUpdateViewModel
+
+@using TechnicalService.Core.Identity
+@using Microsoft.AspNetCore.Http;
+
+@{
+    var userString = Context.Session.GetString("User") ?? "";
+
+    var user = new ApplicationUser();
+    if (userString != "")
+    {
+        user = System.Text.Json.JsonSerializer.Deserialize<ApplicationUser>(userString);
+    }
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <partial name="_MetaStyles"></partial>
+</head>
+<body>
+    <div class="row justify-content-center" style="margin:auto;">
+        <div class="card col-6" style="margin-top:20px; margin-right:20px;">
+            <div class="card-body">
+                <div class="e-profile">
+                    <div class="tab-content pt-3">
+                        <div class="tab-pane active">
+                            <form class="form" asp-controller="Account" asp-action="Profile" method="post">
+                                <div class="col text text-danger" asp-validation-summary="ModelOnly"></div>
+                                @if (ViewBag.Message != null)
+                                {
+                                    <div class="text text-success">@ViewBag.Message</div>
+                                }
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row" style="margin-bottom: 20px;">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="form-label">Ad</label>
+                                                    <input asp-for="UserProfileVM.Name" class="form-control" placeholder="@user.Name">
+                                                    <span asp-validation-for="UserProfileVM.Name"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="form-label">Soyad</label>
+                                                    <input asp-for="UserProfileVM.Surname" class="form-control" placeholder="@user.Surname">
+                                                    <span asp-validation-for="UserProfileVM.Surname"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Email</label>
+                                                    <input class="form-control" asp-for="UserProfileVM.Email" placeholder="@user.Email">
+                                                    <span asp-validation-for="UserProfileVM.Email"></span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Telefon Numarası</label>
+                                                    <input class="form-control" asp-for="UserProfileVM.Phone" placeholder="@user.PhoneNumber">
+                                                    <span asp-validation-for="UserProfileVM.Phone"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input class="form-control" asp-for="UserProfileVM.RegisterDate" type="hidden">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <button class="btn btn-primary " type="submit" style="margin-top:40px;">Profili Güncelle</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card col-4" style="margin-top:20px;">
+            <div class="card-body">
+                <form class="form" asp-controller="Account" asp-action="ChangePassword">
+                    @if (TempData["PassSuccess"] != null)
+                    {
+                        <div class="text text-success">@TempData["PassSuccess"]</div>
+                    }
+                    else if (TempData["PassError"] != null)
+                    {
+                        <div class="text text-danger">@TempData["PassError"]</div>
+                    }
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row" style="margin-bottom:10px;">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="form-label">Şifre</label>
+                                        <input class="form-control" asp-for="ChangePasswordVM.CurrentPassword" placeholder="••••••">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom:10px;">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="form-label">Yeni Şifre</label>
+                                        <input class="form-control" asp-for="ChangePasswordVM.NewPassword" placeholder="••••••">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="form-label">Yeni Şifre Tekrarı</span></label>
+                                        <input class="form-control" asp-for="ChangePasswordVM.NewPasswordConfirm" placeholder="••••••">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <button class="btn btn-primary " type="submit" style="margin-top:20px;">Şifreyi Değiştir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <partial name="_Scripts"></partial>
+</body>
+</html>

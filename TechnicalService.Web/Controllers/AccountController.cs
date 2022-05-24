@@ -142,5 +142,11 @@ namespace TechnicalService.Web.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        [Authorize]
+        public IActionResult EditProfile()
+        {
+            return View();
+        }
     }
 }

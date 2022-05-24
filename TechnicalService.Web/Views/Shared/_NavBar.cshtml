@@ -31,19 +31,29 @@
 
             <div class="mt-4 mt-lg-0 me-lg-n4 py-3 px-4 d-flex align-items-center">
 
-                       @if (Context.User.Identity.IsAuthenticated)
-            {
-                <a asp-controller="Account" asp-action="Profile" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <span class="font-weight-semibold">@user.Name @user.Surname</span> </a>
+                @if (Context.User.Identity.IsAuthenticated)
+                {
 
-            }
-            else
-            {
-                <a asp-controller="Account" asp-action="Login" class="" data-toggle="" aria-haspopup="true" aria-expanded="false">  <button class="btn btn-primary" type="submit">Servis Talebi Oluştur</button>
-                    </a>                  
-                <div class="ms-3">
-                    <a asp-controller="Account" asp-action="Login"  class="btn btn-primary">Giriş Yap</a>
-                </div>
-            }          
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @user.Name @user.Surname
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" asp-controller="Account" asp-action="EditProfile">Profili Güncelle</a>
+                            <a class="dropdown-item" href="#">Servis Talepleri</a>
+                            <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıkış Yap</a>
+                        </div>
+                    </div>                  
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="" data-toggle="" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-primary" type="submit">Servis Talebi Oluştur</button>
+                    </a>
+                    <div class="ms-3">
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-primary">Giriş Yap</a>
+                    </div>
+                }
             </div>
         </div>
     </nav>
