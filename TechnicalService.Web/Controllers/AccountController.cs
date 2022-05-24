@@ -179,5 +179,11 @@ namespace TechnicalService.Web.Controllers
 
             return View();
         }
+
+        [Authorize]
+        public IActionResult EditProfile()
+        {
+            return View();
+        }
     }
 }
