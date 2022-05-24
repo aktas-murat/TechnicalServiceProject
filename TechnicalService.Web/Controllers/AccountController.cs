@@ -1,26 +1,37 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
+using System.Text;
+using System.Text.Encodings.Web;
 using TechnicalService.Core.Identity;
+using TechnicalService.Core.Models.Email;
 using TechnicalService.Core.Role;
+using TechnicalService.Core.Services.Email;
 using TechnicalService.Web.ViewModels;
 
 namespace TechnicalService.Web.Controllers
+    
 {
+
     public class AccountController : Controller
     {
+        
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly IEmailService _emailService;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
         public AccountController(UserManager<ApplicationUser> userManager,
+            IEmailService emailService,
             RoleManager<ApplicationRole> roleManager,
             SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
+            _emailService = emailService;
             _roleManager = roleManager;
             _signInManager = signInManager;
-            //CheckRoles();
+            CheckRoles();
         }
         private void CheckRoles()
         {
@@ -108,26 +119,26 @@ namespace TechnicalService.Web.Controllers
                 result = await _userManager.AddToRoleAsync(user, count == 1 ? Roles.Admin : Roles.Passive);
 
                 //Email gönderme - Aktivasyon
-                //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code },
-                //    protocol: Request.Scheme);
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code },
+                    protocol: Request.Scheme);
 
-                //var email = new MailModel()
-                //{
-                //    To = new List<EmailModel>
-                //{
-                //    new EmailModel()
-                //        { Adress = user.Email, Name = user.UserName }
-                //},
-                //    Body =
-                //        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.",
-                //    Subject = "Confirm your email"
-                //};
+                var email = new MailModel()
+                {
+                    To = new List<EmailModel>
+                {
+                    new EmailModel()
+                        { Adress = user.Email, Name = user.UserName }
+                },
+                    Body =
+                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.",
+                    Subject = "Confirm your email"
+                };
 
-                //await _emailService.SendMailAsync(email);
+                await _emailService.SendMailAsync(email);
                 //TODO: Login olma
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login");
             }
 
             var messages = string.Join("<br>", result.Errors.Select(x => x.Description));
@@ -141,6 +152,32 @@ namespace TechnicalService.Web.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{userId}'.");
+            }
+
+            code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            ViewBag.StatusMessage =
+                result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
+
+            if (result.Succeeded && _userManager.IsInRoleAsync(user, Roles.Passive).Result)
+            {
+                await _userManager.RemoveFromRoleAsync(user, Roles.Passive);
+                await _userManager.AddToRoleAsync(user, Roles.User);
+            }
+
+            return View();
         }
     }
 }
