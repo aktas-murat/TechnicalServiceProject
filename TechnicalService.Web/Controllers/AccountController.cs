@@ -382,17 +382,8 @@ namespace TechnicalService.Web.Controllers
 
             if (result.Succeeded)
             {
-                var emailMessage = new MailModel()
-                {
-                    To = new List<EmailModel> { new EmailModel()
-                {
-                    Adress = user.Email,
-                    Name = user.Name
-                }},
-                    Body = $"Your password has changed. You can login by <a href='{Url.Action("Login", "Account")}'>here</a>",
-                    Subject = "Your password changed successfully"
-                };
-                await _emailService.SendMailAsync(emailMessage);
+                
+               
                 TempData["Message"] = "Şifre değişikliğiniz gerçekleştirilmiştir";
                 return RedirectToAction("Login");
             }
