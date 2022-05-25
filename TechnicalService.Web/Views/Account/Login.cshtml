@@ -20,7 +20,7 @@
             </div>
 
             <form asp-controller="Account" asp-action="Login" method="post">
-                <div asp-validation-summary="ModelOnly"></div>
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" asp-for="Email">Email adresi</label>
@@ -53,7 +53,6 @@
                 <div class="form-footer">
                     <input type="submit" class="col-4 offset-4 btn btn-primary btn-block" style="margin-bottom: 10px;" value="Giriş Yap" />
                 </div>
-                <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
 
                 <!-- Register buttons -->
                 <div class="text-center">

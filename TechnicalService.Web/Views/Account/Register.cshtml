@@ -20,48 +20,66 @@
             </div>
 
             <form asp-controller="Account" asp-action="Register" method="post">
-                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
                 <!-- Name input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" asp-for="Name">Ad</label>
                     <input asp-for="Name" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Name"></span>
                 </div>
+
                 <!-- Surname input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" asp-for="Surname">Soyad</label>
                     <input asp-for="Surname" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Surname"></span>
                 </div>
-                <!-- Username input -->
+
+@*                <!-- Username input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" asp-for="UserName">Kullanıcı Adı</label>
                     <input asp-for="UserName" class="form-control" />
-                </div>
+                    <span class="text-danger" asp-validation-for="UserName"></span>
+                </div>*@
+
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" asp-for="Email">Email adresi</label>
                     <input type="email" asp-for="Email" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+
+                <!-- Phone input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" asp-for="Phone">Telefon Numarası</label>
+                    <input type="text" asp-for="Phone" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Phone"></span>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" asp-for="Password">Şifre</label>
                     <input type="password" asp-for="Password" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Password"></span>
                 </div>
+
                 <!-- ConfirmPassword input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" asp-for="ConfirmPassword">Şifre Tekrarı</label>
                     <input type="password" asp-for="ConfirmPassword" class="form-control" />
+                    <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
                 </div>
 
                 <!-- Submit button -->
                 <div class="form-footer" style="margin-bottom: 10px;">
                     <input type="submit" class="col-4 offset-4 btn btn-primary btn-block" value="Kaydol" />
                 </div>
-                <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
 
                 <!-- Register buttons -->
                 <div class="text-center">
-                    <p>Zaten üye misiniz? <a asp-controller="Account" asp-action="Register">Giriş Yap</a></p>
+                    <p>Zaten üye misiniz? <a asp-controller="Account" asp-action="Login">Giriş Yap</a></p>
                 </div>
             </form>
         </div>

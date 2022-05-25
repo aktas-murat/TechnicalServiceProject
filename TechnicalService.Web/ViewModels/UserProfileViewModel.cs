@@ -21,7 +21,7 @@ namespace TechnicalService.Web.ViewModels
 
         [Required(ErrorMessage = "Telefon numarası alanı gereklidir")]
         [Display(Name = "Telefon Numarası")]
-        [Phone]
+        [Phone(ErrorMessage = "Lütfen geçerli bir numara giriniz.")]
         public string Phone { get; set; }
 
 

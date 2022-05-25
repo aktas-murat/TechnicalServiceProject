@@ -31,7 +31,7 @@ namespace TechnicalService.Web.Controllers
             _emailService = emailService;
             _roleManager = roleManager;
             _signInManager = signInManager;
-            CheckRoles();
+            //CheckRoles();
         }
         private void CheckRoles()
         {
@@ -87,7 +87,7 @@ namespace TechnicalService.Web.Controllers
 
             }
 
-            ModelState.AddModelError(string.Empty, "Username or password is incorrect");
+            ModelState.AddModelError(string.Empty, "Mail veya şifre hatalı!");
             return View(model);
         }
         public IActionResult Register()
@@ -108,7 +108,8 @@ namespace TechnicalService.Web.Controllers
                 UserName = model.Email,
                 Email = model.Email,
                 Name = model.Name,
-                Surname = model.Surname
+                Surname = model.Surname,
+                PhoneNumber = model.Phone
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
