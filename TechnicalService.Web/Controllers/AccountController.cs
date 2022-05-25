@@ -182,9 +182,95 @@ namespace TechnicalService.Web.Controllers
         }
 
         [Authorize]
-        public IActionResult EditProfile()
+        public async Task<IActionResult> EditProfile()
         {
-            return View();
+            var name = HttpContext.User.Identity.Name;
+            var user = await _userManager.FindByNameAsync(name);
+            var model = new ProfileUpdateViewModel
+            {
+                UserProfileVM = new UserProfileViewModel()
+                {
+                    Email = user.Email,
+                    Name = user.Name,
+                    Surname = user.Surname,
+                    Phone = user.PhoneNumber
+                }
+            };
+
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditProfile(ProfileUpdateViewModel model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var name = HttpContext.User.Identity.Name;
+            var user = await _userManager.FindByNameAsync(name);
+
+            if (user == null)
+            {
+                ModelState.AddModelError(string.Empty, "Kullanıcı bulunamadı!");
+                return View(model);
+            }
+
+            //var isAdmin = await _userManager.IsInRoleAsync(user, Roles.Admin);
+            //if (user.Email != model.UserProfileVM.Email && !isAdmin)
+            //{
+            //    await _userManager.RemoveFromRoleAsync(user, Roles.User);
+            //    await _userManager.AddToRoleAsync(user, Roles.Passive);
+            //    user.EmailConfirmed = false;
+
+            //    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            //    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+            //    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Scheme);
+
+            //    var emailMessage = new MailModel()
+            //    {
+            //        To = new List<EmailModel> { new()
+            //    {
+            //        Adress = model.UserProfileVM.Email,
+            //        Name = model.UserProfileVM.Name
+            //    }},
+            //        Body = $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here </a>.",
+            //        Subject = "Confirm your email"
+            //    };
+
+            //    await _emailService.SendMailAsync(emailMessage);
+            //}
+
+
+            user.Name = model.UserProfileVM.Name;
+            user.Surname = model.UserProfileVM.Surname;
+            user.Email = model.UserProfileVM.Email;
+            user.PhoneNumber = model.UserProfileVM.Phone;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                ViewBag.Message = "Profiliniz başarıyla güncellendi!";
+                var userl = await _userManager.FindByNameAsync(user.UserName);
+                await _signInManager.SignInAsync(userl, true);
+                HttpContext.Session.SetString("User", System.Text.Json.JsonSerializer.Serialize(new
+                {
+                    user.Name,
+                    user.Surname,
+                    user.Email,
+                    user.PhoneNumber
+                }));
+            }
+            else
+            {
+                var message = string.Join("<br>", result.Errors.Select(x => x.Description));
+                ViewBag.Message = message;
+            }
+
+            return View(model);
         }
 
 
