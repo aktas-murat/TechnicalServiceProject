@@ -186,5 +186,37 @@ namespace TechnicalService.Web.Controllers
         {
             return View();
         }
+
+
+        [HttpPost, Authorize]
+        public async Task<IActionResult> ChangePassword(UpdateProfilePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["PassError"] = "There has been an error.";
+                return RedirectToAction(nameof(EditProfile));
+            }
+
+            var name = HttpContext.User.Identity.Name;
+            var user = await _userManager.FindByNameAsync(name);
+            var result = await _userManager.ChangePasswordAsync(user, model.ChangePasswordVM.CurrentPassword, model.ChangePasswordVM.NewPassword);
+
+            if (result.Succeeded)
+            {
+                TempData["PassSuccess"] = "Your password has been changed successfully";
+            }
+            else
+            {
+                var message = string.Join("<br>", result.Errors.Select(x => x.Description));
+                TempData["PassError"] = message;
+            }
+
+
+            return RedirectToAction("EditProfile", "Account");
+        }
     }
+
+
+
 }
+
