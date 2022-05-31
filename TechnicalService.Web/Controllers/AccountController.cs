@@ -351,13 +351,13 @@ namespace TechnicalService.Web.Controllers
         [HttpGet]
         public IActionResult ConfirmResetPassword(string userId, string code)
         {
-            //if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(code))
-            //{
-            //    return BadRequest("Hatalı istek");
-            //}
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(code))
+            {
+                return BadRequest("Hatalı istek");
+            }
 
-            //ViewBag.Code = code;
-            //ViewBag.UserId = userId;
+            ViewBag.Code = code;
+            ViewBag.UserId = userId;
             return View();
         }
 
