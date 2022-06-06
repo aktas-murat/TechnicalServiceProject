@@ -1,55 +1,65 @@
 ﻿@model ServiceViewModel
 
 
-<div class="card">
-    <div class="card-body">
-        <form>
-
-            <div class="col-6">
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail4">Ad</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="">
+<div class="card col-10 offset-1">
+    <form>
+        <div class="row" style="margin: auto;">
+            <div class="row card-body">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Ad</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Soyad</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="">
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputPassword4">Soyad</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="">
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Telefon</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="inputCity">Adres</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="form-group col-md-3">
+                            <label for="inputCity">Apt no</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputCity">Kat</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputCity">Daire</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="form-group">
+                            <p><label for="inputCity">Mesaj</label></p>
+                            <textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <a class="btn btn-primary col-md-3" href="#">Talep Oluştur</a>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputPassword4">Telefon</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="">
-                    </div>
+                <div class="col-6">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.1382990261286!2d29.004627714784657!3d41.04410462516943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7a24975fe5d%3A0xa05d7aa13cfcaf89!2sWissen!5e0!3m2!1str!2str!4v1654503455480!5m2!1str!2str" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-
-                <div class="row">
-                    <div class="form-group col-md-3">
-                        <label for="inputCity">Apt no</label>
-                        <input type="text" class="form-control" id="inputCity">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputCity">Kat</label>
-                        <input type="text" class="form-control" id="inputCity">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputCity">Daire</label>
-                        <input type="text" class="form-control" id="inputCity">
-                    </div>
-                </div>
-
             </div>
-
-
-            
-            <div class="col-6">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.1382990261286!2d29.004627714784657!3d41.04410462516943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7a24975fe5d%3A0xa05d7aa13cfcaf89!2sWissen!5e0!3m2!1str!2str!4v1654503455480!5m2!1str!2str" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
