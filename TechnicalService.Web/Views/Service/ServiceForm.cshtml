@@ -18,52 +18,52 @@
                 <div class="col-6">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Ad</label>
-                            <input type="name" class="form-control" id="inputEmail4" placeholder="aaaaaaaaaaaaa">
+                            <label class="form-label" >Ad</label>
+                            <input asp-for="Name" class="form-control" id="Nameid" >
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Soyad</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="">
+                            <label class="form-label" >Soyad</label>
+                            <input asp-for="Surname" class="form-control" id="Surnameid">
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="">
+                            <label class="form-label" >Email</label>
+                            <input asp-for="Email" class="form-control" id="Emailid" >
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Telefon</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="">
+                            <label class="form-label">Telefon</label>
+                            <input asp-for="Phone" class="form-control" id="Phoneid">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <label for="inputCity">Adres</label>
-                            <input type="text" class="form-control" id="inputCity" placeholder="aaaaaaaasmse">
+                            <label class="form-label">Adres</label>
+                            <input asp-for="CustomerAddress" class="form-control" id="CustomerAdressid" >
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="form-group col-md-3">
-                            <label asp-for="BuildingNo">Aptartman No</label>
-                            <input class="form-control" asp-for="BuildingNo">
+                            <label class="form-label">Aptartman No</label>
+                            <input class="form-control" asp-for="BuildingNo" id="BuildingNoid">
                         </div>
                         <div class="form-group col-md-3">
-                            <label asp-for="FloorNo">Kat</label>
-                            <input class="form-control" asp-for="FloorNo">
+                            <label class="form-label">Kat</label>
+                            <input class="form-control" asp-for="FloorNo" id="FloorNoid">
                         </div>
                         <div class="form-group col-md-3">
                             <label asp-for="DoorNo">Daire</label>
-                            <input class="form-control" asp-for="DoorNo">
+                            <input class="form-control" asp-for="DoorNo" id="DoorNoid">
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="form-group">
                             <p><label asp-for="Message">Mesaj</label></p>
-                            <textarea asp-for="Message" rows="4" cols="50"></textarea>
+                            <textarea asp-for="Message" rows="4" cols="50"> </textarea>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
-                        <a class="btn btn-primary col-md-3" href="#">Talep Oluştur</a>
+                        <a type="submit" class="btn btn-primary col-md-3" href="#">Talep Oluştur</a>
                     </div>
                 </div>
                 <div class="col-6">
