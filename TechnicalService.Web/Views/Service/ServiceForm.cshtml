@@ -2,54 +2,54 @@
 
 
 <div class="card col-10 offset-1">
-    <form>
+    <form asp-controller="Service" asp-action="ServiceForm" method="post">
         <div class="row" style="margin: auto;">
             <div class="row card-body">
                 <div class="col-6">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Ad</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="">
+                            <label asp-for="Name">Ad</label>
+                            <input class="form-control" asp-for="Name" placeholder="">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Soyad</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="">
+                            <label asp-for="Surname">Soyad</label>
+                            <input class="form-control" asp-for="Surname" placeholder="">
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="">
+                            <label asp-for="Email">Email</label>
+                            <input class="form-control" asp-for="Email" placeholder="">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Telefon</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="">
+                            <label asp-for="Phone">Telefon</label>
+                            <input class="form-control" asp-for="Phone" placeholder="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <label for="inputCity">Adres</label>
-                            <input type="text" class="form-control" id="inputCity">
+                            <label asp-for="CustomerAddress">Adres</label>
+                            <input class="form-control" asp-for="CustomerAddress">
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="form-group col-md-3">
-                            <label for="inputCity">Apt no</label>
-                            <input type="text" class="form-control" id="inputCity">
+                            <label asp-for="BuildingNo">Aptartman No</label>
+                            <input class="form-control" asp-for="BuildingNo">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="inputCity">Kat</label>
-                            <input type="text" class="form-control" id="inputCity">
+                            <label asp-for="FloorNo">Kat</label>
+                            <input class="form-control" asp-for="FloorNo">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="inputCity">Daire</label>
-                            <input type="text" class="form-control" id="inputCity">
+                            <label asp-for="DoorNo">Daire</label>
+                            <input class="form-control" asp-for="DoorNo">
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="form-group">
-                            <p><label for="inputCity">Mesaj</label></p>
-                            <textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
+                            <p><label asp-for="Message">Mesaj</label></p>
+                            <textarea asp-for="Message" rows="4" cols="50"></textarea>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">

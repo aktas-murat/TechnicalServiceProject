@@ -8,5 +8,11 @@ namespace TechnicalService.Web.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Get()
+        {
+            return View();
+        }
     }
 }

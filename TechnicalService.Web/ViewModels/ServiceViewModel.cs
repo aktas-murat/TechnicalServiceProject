@@ -2,9 +2,17 @@
 {
     public class ServiceViewModel
     {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+
         public int CustomerId { get; set; }
 
         public string CustomerAddress { get; set; }
+        public string BuildingNo { get; set; }
+        public string FloorNo { get; set; }
+        public string DoorNo { get; set; }
 
         public int TechnicianId { get; set; }
 
@@ -13,5 +21,8 @@
         public string ServiceMessage { get; set; }
 
         public int ServiceStatusId { get; set; }
+
+        public string Message { get; set; }
     }
 }
+
