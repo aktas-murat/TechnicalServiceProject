@@ -17,7 +17,7 @@ public class ServiceDemand : BaseEntity <int>
     public string DoorNo { get; set; }
     public string Phone { get; set; }
     public string Message { get; set; }
-    public string Adress { get; set; }
-    public string UserId { get; set; }
+    public string Address { get; set; }
+    public string? UserId { get; set; }
 
 }

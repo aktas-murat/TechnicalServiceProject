@@ -158,6 +158,35 @@ namespace TechnicalService.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ServiceDemands",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    SurName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    BuildingNo = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
+                    FloorNo = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    DoorNo = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServiceDemands", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ServiceDemands_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -196,6 +225,16 @@ namespace TechnicalService.Data.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ServiceDemands_Id",
+                table: "ServiceDemands",
+                column: "Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ServiceDemands_UserId",
+                table: "ServiceDemands",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -214,6 +253,9 @@ namespace TechnicalService.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "ServiceDemands");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

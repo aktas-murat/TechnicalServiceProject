@@ -1,4 +1,4 @@
-﻿namespace TechnicalService.Web.ViewModels
+﻿namespace TechnicalService.Core.ViewModels
 {
     public class ServiceViewModel
     {
@@ -9,7 +9,7 @@
 
         public int CustomerId { get; set; }
 
-        public string CustomerAddress { get; set; }
+        public string Address { get; set; }
         public string BuildingNo { get; set; }
         public string FloorNo { get; set; }
         public string DoorNo { get; set; }
@@ -18,11 +18,8 @@
 
         public int CartId { get; set; }
 
-        public string ServiceMessage { get; set; }
-
         public int ServiceStatusId { get; set; }
 
         public string Message { get; set; }
     }
 }
-

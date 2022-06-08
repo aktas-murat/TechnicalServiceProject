@@ -3,12 +3,18 @@ using Microsoft.EntityFrameworkCore;
 using TechnicalService.Data.Data;
 using TechnicalService.Core.Identity;
 using TechnicalService.Core.Services.Email;
+using System.Reflection;
+using TechnicalService.Business.MapperProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 var con1 = builder.Configuration.GetConnectionString("con1");
 builder.Services.AddDbContext<MyContext>(options => options.UseSqlServer(con1));
 builder.Services.AddSession();
 builder.Services.AddTransient<IEmailService, SmtpEmailService>();
+builder.Services.AddAutoMapper(options =>
+{
+    options.AddProfile<MapperProfile>();
+});
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {
     // Password settings.

@@ -1,5 +1,8 @@
 ﻿@model ServiceViewModel
+
 @using TechnicalService.Core.Identity
+@using TechnicalService.Core.ViewModels
+
 
 
 @{
@@ -37,7 +40,7 @@
                     <div class="row">
                         <div class="form-group">
                             <label class="form-label">Adres</label>
-                            <input  class="form-control" id="CustomerAdressid" >
+                            <input  class="form-control" asp-for="Address" id="CustomerAdressid" >
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
@@ -61,7 +64,7 @@
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
-                        <a type="submit" class="btn btn-primary col-md-3" href="#">Talep Oluştur</a>
+                        <button type="submit" class="btn btn-primary col-md-3" asp-controller="Service" asp-action="ServiceForm" method="post" >Talep Oluştur</button>
                     </div>
                 </div>
                 <div class="col-6" id="map"></div>

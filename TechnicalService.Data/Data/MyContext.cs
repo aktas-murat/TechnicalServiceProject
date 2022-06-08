@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TechnicalService.Core.Entities;
 using TechnicalService.Core.Identity;
 
 namespace TechnicalService.Data.Data
@@ -8,6 +9,11 @@ namespace TechnicalService.Data.Data
     {
         public MyContext(DbContextOptions options) : base(options)
         {
+        }
+
+        public MyContext ()
+        {
+
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -24,6 +30,25 @@ namespace TechnicalService.Data.Data
             {
                 entity.Property(x => x.Description).HasMaxLength(120).IsRequired(false);
             });
+
+            builder.Entity<ServiceDemand>(entity =>
+            {
+                entity.HasIndex(x => x.Id);
+                entity.Property(x => x.Address).HasMaxLength(50).IsRequired(true);
+                entity.Property(x => x.Name).HasMaxLength(50).IsRequired(true);
+                entity.Property(x => x.SurName).HasMaxLength(50).IsRequired(true);
+                entity.Property(x => x.Phone).HasMaxLength(13).IsRequired(true);
+                entity.Property(x => x.Message).HasMaxLength(300).IsRequired(true);
+                entity.Property(x => x.FloorNo).HasMaxLength(2).IsRequired(true);
+                entity.Property(x => x.BuildingNo).HasMaxLength(4).IsRequired(true);
+                entity.Property(x => x.DoorNo).HasMaxLength(5).IsRequired(true);
+                entity.Property(x => x.Email).HasMaxLength(50).IsRequired(true);
+                entity.HasOne<ApplicationUser>().WithMany().HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Restrict);
+
+            });
         }
+
+            public DbSet<ServiceDemand> ServiceDemands { get; set; }
     }
+    
 }
