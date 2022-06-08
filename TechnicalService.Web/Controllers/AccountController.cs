@@ -31,7 +31,7 @@ namespace TechnicalService.Web.Controllers
             _emailService = emailService;
             _roleManager = roleManager;
             _signInManager = signInManager;
-            CheckRoles();
+            //CheckRoles();
         }
         private void CheckRoles()
         {

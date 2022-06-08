@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using TechnicalService.Core.Entities;
@@ -23,6 +24,7 @@ namespace TechnicalService.Web.Controllersrepos
 
         //internal IRepository<ServiceDemand, int> ServiceDemandRepository => _serviceDemandRepository;
 
+        [Authorize]
         public IActionResult ServiceForm()
         {
             return View();
@@ -30,6 +32,7 @@ namespace TechnicalService.Web.Controllersrepos
 
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> ServiceForm(ServiceViewModel model)
         {
