@@ -45,8 +45,15 @@ namespace TechnicalService.Web.Controllersrepos
        
             await _context.ServiceDemands.AddAsync(demand);
             await _context.SaveChangesAsync();
-            return View(model);
 
+            TempData["Status"] = "Success";
+            return RedirectToAction("ServiceDemands", "Service");
+        }
+
+        [Authorize]
+        public IActionResult ServiceDemands()
+        {
+            return View();
         }
     }
 }

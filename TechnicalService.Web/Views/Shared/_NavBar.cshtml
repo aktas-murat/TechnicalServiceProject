@@ -38,15 +38,14 @@
 
                 @if (Context.User.Identity.IsAuthenticated)
                 {
-
+                    <a asp-controller="Service" asp-action="ServiceForm" class="btn btn-primary" style="margin-right: 10px;">Servis Talebi Oluştur</a>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @user.Name @user.Surname
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" asp-controller="Account" asp-action="EditProfile">Profili Güncelle</a>
-                            <a class="dropdown-item" asp-controller="Service" asp-action="ServiceForm">Servis Talebi Oluştur</a>
-                            <a class="dropdown-item" href="#">Servis Taleplerim</a>
+                            <a class="dropdown-item" asp-controller="Service" asp-action="ServiceDemands">Servis Taleplerim</a>
                             <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Çıkış Yap</a>
                         </div>
                     </div>
