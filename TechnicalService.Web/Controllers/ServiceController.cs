@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TechnicalService.Core.Entities;
 using TechnicalService.Core.ViewModels;
 using TechnicalService.Data.Data;
+using TechnicalService.Web.Extensions;
 using TechnicalService.Web.ViewModels;
 
 namespace TechnicalService.Web.Controllersrepos
@@ -42,7 +43,9 @@ namespace TechnicalService.Web.Controllersrepos
                 return View(model);
             }
             var demand = _mapper.Map<ServiceDemand>(model);
-       
+
+            demand.UserId = HttpContext.GetUserId();
+
             await _context.ServiceDemands.AddAsync(demand);
             await _context.SaveChangesAsync();
 

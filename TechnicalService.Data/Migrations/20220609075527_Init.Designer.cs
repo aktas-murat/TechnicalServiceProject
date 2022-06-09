@@ -12,7 +12,7 @@ using TechnicalService.Data.Data;
 namespace TechnicalService.Data.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220608114129_Init")]
+    [Migration("20220609075527_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -187,6 +187,7 @@ namespace TechnicalService.Data.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -361,7 +362,8 @@ namespace TechnicalService.Data.Migrations
                     b.HasOne("TechnicalService.Core.Identity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
