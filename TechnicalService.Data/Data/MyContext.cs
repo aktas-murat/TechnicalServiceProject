@@ -45,6 +45,7 @@ namespace TechnicalService.Data.Data
                 entity.Property(x => x.Email).HasMaxLength(50).IsRequired(true);
                 entity.HasOne<ApplicationUser>().WithMany().HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Restrict);
 
+
             });
         }
 

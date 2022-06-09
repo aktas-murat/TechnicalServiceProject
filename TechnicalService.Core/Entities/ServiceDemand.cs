@@ -20,4 +20,6 @@ public class ServiceDemand : BaseEntity <int>
     public string Address { get; set; }
     public string UserId { get; set; }
 
+    public int? TechnicianId { get; set; }
+    public int StatusId { get; set; }
 }
