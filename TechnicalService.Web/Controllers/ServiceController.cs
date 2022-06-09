@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using TechnicalService.Core.Entities;
 using TechnicalService.Core.ViewModels;
@@ -56,7 +57,21 @@ namespace TechnicalService.Web.Controllersrepos
         [Authorize]
         public IActionResult ServiceDemands()
         {
-            return View();
+            var model = from sd in _context.ServiceDemands
+                        join customer in _context.Users on sd.UserId equals customer.Id
+                        select (new ServiceDemand
+                        {
+                            UserId = sd.UserId,
+                            Address = sd.Address,
+                            BuildingNo = sd.BuildingNo,
+                            CreatedAt = sd.CreatedAt,
+                            DoorNo = sd.DoorNo,
+                            Email = sd.Email,
+                            Id = sd.Id,
+
+                        });
+
+            return View(model.ToList());
         }
     }
 }

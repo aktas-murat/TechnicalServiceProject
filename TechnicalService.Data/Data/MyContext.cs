@@ -11,11 +11,6 @@ namespace TechnicalService.Data.Data
         {
         }
 
-        public MyContext ()
-        {
-
-        }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -49,7 +44,7 @@ namespace TechnicalService.Data.Data
             });
         }
 
-            public DbSet<ServiceDemand> ServiceDemands { get; set; }
+        public DbSet<ServiceDemand> ServiceDemands { get; set; }
     }
-    
+
 }

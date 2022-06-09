@@ -1,4 +1,6 @@
-﻿<table class="table">
+﻿@model List<TechnicalService.Core.Entities.ServiceDemand>
+
+<table class="table">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
@@ -11,15 +13,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>1</td>
-            <td>İşlem tamamlandı.</td>
-            <td>Serkan Özsöz</td>
-            <td>1234567890</td>
-            <td>Klima soğutmuyor.</td>
-            <td>Fezullah Mahalesi, Maltepe, İstanbul</td>
-        </tr>
+        @for (int i = 0; i < Model.Length; i++)
+        {
+            var data = Model[i];
+            <tr>
+                <th scope="row">@(i+1)</th>
+                <td>
+                    @data.Address
+                </td>
+                <td>İşlem tamamlandı.</td>
+                <td>Serkan Özsöz</td>
+                <td>1234567890</td>
+                <td>Klima soğutmuyor.</td>
+                <td>Fezullah Mahalesi, Maltepe, İstanbul</td>
+            </tr>
+        }
+
         <tr>
             <th scope="row">2</th>
             <td>2</td>
