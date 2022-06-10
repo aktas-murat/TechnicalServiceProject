@@ -29,7 +29,7 @@ namespace TechnicalService.Data.Data
             builder.Entity<ServiceDemand>(entity =>
             {
                 entity.HasIndex(x => x.Id);
-                entity.Property(x => x.TechnicianId);
+                entity.Property(x => x.TechnicianId).HasMaxLength(50).IsRequired(true);
                 entity.Property(x => x.Address).HasMaxLength(50).IsRequired(true);
                 entity.Property(x => x.Name).HasMaxLength(50).IsRequired(true);
                 entity.Property(x => x.SurName).HasMaxLength(50).IsRequired(true);

@@ -1,51 +1,32 @@
 ﻿@model List<TechnicalService.Core.Entities.ServiceDemand>
 
 <table class="table">
-    <thead class="thead-dark">
-        <tr>
-            
-            <th scope="col">Talep No</th>
-            <th scope="col">Talep Durumu</th>
-            <th scope="col">Teknisyen</th>
-            <th scope="col">Tel.No</th>
-            <th scope="col">Mesaj</th>
-            <th scope="col">Adres</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (int i = 0; i < Model.Count ; i++)
-        {
-            var data = Model[i];
-            <tr>
-                <th scope="row">@(i+1)</th>
-                <td>
-                    @data.Id
-                </td>
-                <td>İşlem tamamlandı.</td>
-                <td>Serkan Özsöz</td>
-                <td>1234567890</td>
-                <td>Klima soğutmuyor.</td>
-                <td>Fezullah Mahalesi, Maltepe, İstanbul</td>
-            </tr>
-        }
-
-        <tr>
-       
-            <td>2</td>
-            <td>Onay bekliyor...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>Klima su akıtıyor.</td>
-            <td>Barbaros Bulvarı, Beşiktaş, İstanbul</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>3</td>
-            <td>Onaylandı.</td>
-            <td>Serkan Özsöz</td>
-            <td>1234567890</td>
-            <td>Klima soğutmuyor.</td>
-            <td>Fezullah Mahalesi, Maltepe, İstanbul</td>
-        </tr>
-    </tbody>
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Talep No</th>
+			<th scope="col">Talep Durumu</th>
+			<th scope="col">Teknisyen</th>
+			<th scope="col">Tel.No</th>
+			<th scope="col">Mesaj</th>
+			<th scope="col">Adres</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (int i = 0; i < Model.Count; i++)
+		{
+			var data = Model[i];
+			<tr>
+				<th scope="row">@(i+1)</th>
+				<td>
+					@data.Id
+				</td>
+				<td>İşlem tamamlandı.</td>
+				<td>@data.TechnicianId</td>
+				<td>1234567890</td>
+				<td>Klima soğutmuyor.</td>
+				<td>Fezullah Mahalesi, Maltepe, İstanbul</td>
+			</tr>
+		}
+	</tbody>
 </table>

@@ -74,18 +74,18 @@ namespace TechnicalService.Web.Controllersrepos
                             Id = sd.Id,
                             Message = sd.Message,
                             Phone = sd.Phone,
-                            TechnicianId = sd.TechnicianId,
-                            //StatusId = sd.StatusId,
+                            TechnicianId = sd.TechnicianId
+                            //StatusId = sd.StatusId
 
 
                         });
-            model.ForEachAsync(async x =>
-            {
-                var technician = await _userManager.FindByIdAsync(x.TechnicianId);
-                var customer = await _userManager.FindByIdAsync(x.UserId);
 
+          //  model.ToList().ForEach(x =>
+          //{
+          //    var technician = _userManager.FindByIdAsync(x.TechnicianId);
+          //      //var customer =  _userManager.FindByIdAsync(x.UserId);
+          //  });
 
-            });
             return View(model.ToList());
         }
     }
