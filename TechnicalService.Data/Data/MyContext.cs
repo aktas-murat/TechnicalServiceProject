@@ -29,6 +29,7 @@ namespace TechnicalService.Data.Data
             builder.Entity<ServiceDemand>(entity =>
             {
                 entity.HasIndex(x => x.Id);
+                entity.Property(x => x.TechnicianId);
                 entity.Property(x => x.Address).HasMaxLength(50).IsRequired(true);
                 entity.Property(x => x.Name).HasMaxLength(50).IsRequired(true);
                 entity.Property(x => x.SurName).HasMaxLength(50).IsRequired(true);
@@ -39,9 +40,10 @@ namespace TechnicalService.Data.Data
                 entity.Property(x => x.DoorNo).HasMaxLength(5).IsRequired(true);
                 entity.Property(x => x.Email).HasMaxLength(50).IsRequired(true);
                 entity.HasOne<ApplicationUser>().WithMany().HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Restrict);
-
-
+               
             });
+
+          
         }
 
         public DbSet<ServiceDemand> ServiceDemands { get; set; }

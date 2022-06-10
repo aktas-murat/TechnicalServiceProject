@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using TechnicalService.Core.Entities;
+using TechnicalService.Core.Identity;
 using TechnicalService.Core.ViewModels;
 using TechnicalService.Data.Data;
 using TechnicalService.Web.Extensions;
@@ -16,11 +18,13 @@ namespace TechnicalService.Web.Controllersrepos
         //private readonly IRepository<ServiceDemand, int> _serviceDemandRepository;
         private readonly MyContext _context;
         private readonly IMapper _mapper;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ServiceController(IMapper mapper, MyContext context)
+        public ServiceController(IMapper mapper, MyContext context, UserManager<ApplicationUser> userManager)
         {
             _mapper = mapper;
             _context = context;
+            _userManager = userManager;
         }
 
 
@@ -68,9 +72,20 @@ namespace TechnicalService.Web.Controllersrepos
                             DoorNo = sd.DoorNo,
                             Email = sd.Email,
                             Id = sd.Id,
+                            Message = sd.Message,
+                            Phone = sd.Phone,
+                            TechnicianId = sd.TechnicianId,
+                            //StatusId = sd.StatusId,
+
 
                         });
+            model.ForEachAsync(async x =>
+            {
+                var technician = await _userManager.FindByIdAsync(x.TechnicianId);
+                var customer = await _userManager.FindByIdAsync(x.UserId);
 
+
+            });
             return View(model.ToList());
         }
     }
