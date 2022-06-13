@@ -8,74 +8,71 @@
 @{
 
 
-    var user = new ApplicationUser();
+	var user = new ApplicationUser();
 
 }
 
 <div class="card col-10 offset-1">
-    <form asp-controller="Service" asp-action="ServiceForm" method="post">
-        <div class="row" style="margin: auto;">
-            <div class="row card-body">
-                <div class="col-6">
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label class="form-label" >Ad</label>
-                            <input asp-for="Name" class="form-control" id="Nameid" >
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="form-label" >Soyad</label>
-                            <input asp-for="Surname" class="form-control" id="Surnameid">
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div class="form-group col-md-6">
-                            <label class="form-label" >Email</label>
-                            <input asp-for="Email" class="form-control" id="Emailid" >
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="form-label">Telefon</label>
-                            <input asp-for="Phone" class="form-control" id="Phoneid">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="form-label">Adres</label>
-                            <input  class="form-control" asp-for="Address" id="CustomerAdressid" >
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div class="form-group col-md-3">
-                            <label class="form-label">Apartman No</label>
-                            <input class="form-control" asp-for="BuildingNo" id="BuildingNoid">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="form-label">Kat</label>
-                            <input class="form-control" asp-for="FloorNo" id="FloorNoid">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label asp-for="DoorNo">Daire</label>
-                            <input class="form-control" asp-for="DoorNo" id="DoorNoid">
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div class="form-group">
-                            <p><label asp-for="Message">Mesaj</label></p>
-                            <textarea asp-for="Message" rows="4" cols="50"> </textarea>
-                        </div>
-                    </div>
-                    <div class="row d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary col-md-3" asp-controller="Service" asp-action="ServiceForm" method="post" >Talep Oluştur</button>
-                    </div>
-                </div>
-                <div class="col-6" id="map"></div>
-            </div>
-        </div>
-    </form>
+	<form asp-controller="Service" asp-action="ServiceForm" method="post">
+		<div class="row" style="margin: auto;">
+			<div class="row card-body">
+				<div class="col-6">
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label class="form-label">Ad</label>
+							<input asp-for="Name" class="form-control" id="Nameid">
+						</div>
+						<div class="form-group col-md-6">
+							<label class="form-label">Soyad</label>
+							<input asp-for="Surname" class="form-control" id="Surnameid">
+						</div>
+					</div>
+					<div class="row" style="margin-bottom: 10px;">
+						<div class="form-group col-md-6">
+							<label class="form-label">Email</label>
+							<input asp-for="Email" class="form-control" id="Emailid">
+						</div>
+						<div class="form-group col-md-6">
+							<label class="form-label">Telefon</label>
+							<input asp-for="Phone" class="form-control" id="Phoneid">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<label class="form-label">Adres</label>
+							<input class="form-control" asp-for="Address" id="CustomerAdressid">
+						</div>
+					</div>
+					<div class="row" style="margin-bottom: 10px;">
+						<div class="form-group col-md-4">
+							<label class="form-label">Apartman No</label>
+							<input class="form-control" asp-for="BuildingNo" id="BuildingNoid">
+						</div>
+						<div class="form-group col-md-4">
+							<label class="form-label">Kat</label>
+							<input class="form-control" asp-for="FloorNo" id="FloorNoid">
+						</div>
+						<div class="form-group col-md-4">
+							<label class="form-label">Daire</label>
+							<input class="form-control" asp-for="DoorNo" id="DoorNoid">
+						</div>
+					</div>
+					<div class="row" style="margin-bottom: 10px;">
+						<div class="form-group">
+							<p><label asp-for="Message">Mesaj</label></p>
+							<textarea asp-for="Message" rows="4" cols="50"> </textarea>
+						</div>
+					</div>
+					<div class="row d-flex justify-content-center">
+						<button type="submit" class="btn btn-primary col-md-3" asp-controller="Service" asp-action="ServiceForm" method="post">Talep Oluştur</button>
+					</div>
+				</div>
+				<div class="col-6" id="map"></div>
+			</div>
+		</div>
+	</form>
 </div>
-<script
-      src="https://maps.googleapis.com/maps/api/js?key=***"
-      defer
-    ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=***"
+		defer></script>
 
 
-    

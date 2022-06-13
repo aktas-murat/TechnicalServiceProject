@@ -13,7 +13,7 @@ function onSuccess(position) {
 
     initMap();
 
-    const api_key = "****"
+    const api_key = "***"
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${api_key}`;
 
     fetch(url)
@@ -43,6 +43,7 @@ function onError(error) {
 }
 
 let map;
+let marker;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -50,9 +51,32 @@ function initMap() {
         zoom: 15,
     });
 
-    const marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
         position: { lat: latitude, lng: longitude },
         map: map,
+    });
+
+    map.addListener('click', (e) => {
+        var posClick = {
+            lat: e.latLng.lat(),
+            lng: e.latLng.lng()
+        };
+        //markerları temizle
+        marker.setMap(null);
+        //tıklanan konuma göre marker ekle
+        //marker = new google.maps.Marker({
+        //    position: posClick,
+        //    map: map,
+        //    title: 'Adresiniz',
+        //    animation: google.maps.Animation.DROP
+        //});
+        const pos = {
+            coords: {
+                latitude: posClick.lat,
+                longitude: posClick.lng
+            }
+        };
+        onSuccess(pos);
     });
 }
 

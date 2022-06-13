@@ -39,7 +39,9 @@ namespace TechnicalService.Data.Data
                 entity.Property(x => x.BuildingNo).HasMaxLength(4).IsRequired(true);
                 entity.Property(x => x.DoorNo).HasMaxLength(5).IsRequired(true);
                 entity.Property(x => x.Email).HasMaxLength(50).IsRequired(true);
-                entity.HasOne<ApplicationUser>().WithMany().HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne<ApplicationUser>().WithMany()
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
                
             });
 
