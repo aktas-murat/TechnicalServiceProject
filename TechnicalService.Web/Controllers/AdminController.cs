@@ -12,17 +12,14 @@ namespace TechnicalService.Web.Controllers
 		{
 			return View();
 		}
-	}
-}
-
 
 		public IActionResult EditUserRole()
-        {
+		{
 			return View();
-        }
+		}
 	}
 
-
-
-
 }
+
+
+		
