@@ -45,10 +45,17 @@ namespace TechnicalService.Data.Data
                
             });
 
-          
+            builder.Entity<Product>(entity =>
+            {
+                entity.HasIndex(x => x.Id);
+                entity.Property(x => x.Name).IsRequired().HasMaxLength(50);
+                entity.Property(x => x.UnitPrice).HasPrecision(8, 2);
+            });
+
         }
 
         public DbSet<ServiceDemand> ServiceDemands { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 
 }

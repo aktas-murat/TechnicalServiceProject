@@ -8,5 +8,9 @@ namespace TechnicalService.Web.Controllers
 		{
 			return View();
 		}
+		public IActionResult AdminProductPage()
+		{
+			return View();
+		}
 	}
 }
