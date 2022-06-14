@@ -1,0 +1,32 @@
+﻿@model List<TechnicalService.Core.Entities.ServiceDemand>
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Talep No</th>
+			<th scope="col">Talep Durumu</th>
+			<th scope="col">Teknisyen</th>
+			<th scope="col">Tel.No</th>
+			<th scope="col">Mesaj</th>
+			<th scope="col">Adres</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (int i = 0; i < Model.Count; i++)
+		{
+			var data = Model[i];
+			<tr>
+				<th scope="row">@(i+1)</th>
+				<td>
+					@data.Id
+				</td>
+				<td>@data.StatusId</td>
+				<td>@data.TechnicianId</td>
+				<td>@data.Phone</td>
+				<td>@data.Message</td>
+				<td>@data.Address</td>
+			</tr>
+		}
+	</tbody>
+</table>
