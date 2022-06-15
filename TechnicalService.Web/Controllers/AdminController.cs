@@ -29,7 +29,7 @@ namespace TechnicalService.Web.Controllers
 			return View();
 		}
 		[Authorize(Roles ="Admin")]
-        public async Task<IActionResult> EditUserRole()
+        public async Task<IActionResult> GetUser()
 		{
 		
 
@@ -47,6 +47,11 @@ namespace TechnicalService.Web.Controllers
             }
 			return View(model);
 
+		}
+
+		public IActionResult EditUser()
+		{
+			return View();
 		}
 	}
 
