@@ -12,12 +12,8 @@ using TechnicalService.Data.Data;
 namespace TechnicalService.Data.Migrations
 {
     [DbContext(typeof(MyContext))]
-<<<<<<<< HEAD:TechnicalService.Data/Migrations/20220615092359_Init.Designer.cs
-    [Migration("20220615092359_Init")]
-========
-    [Migration("20220614092437_Init")]
->>>>>>>> 51491bd9e436675244b862fe87347caced6742ef:TechnicalService.Data/Migrations/20220614092437_Init.Designer.cs
-    partial class Init
+    [Migration("20220615121451_Murat")]
+    partial class Murat
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TechnicalService.Data.Migrations
 {
-    public partial class Init : Migration
+    public partial class Murat : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
