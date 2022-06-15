@@ -26,6 +26,8 @@ namespace TechnicalService.Web.ViewModels
 
 
         public DateTime RegisterDate { get; set; }
+
+
     }
 }
 

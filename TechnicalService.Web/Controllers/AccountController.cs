@@ -31,7 +31,7 @@ namespace TechnicalService.Web.Controllers
             _emailService = emailService;
             _roleManager = roleManager;
             _signInManager = signInManager;
-            //CheckRoles();
+            CheckRoles();
         }
         private void CheckRoles()
         {
@@ -45,6 +45,12 @@ namespace TechnicalService.Web.Controllers
                 }).Result;
             }
         }
+
+        public IActionResult ChangeRoles()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Login(string? returnUrl = null)
         {

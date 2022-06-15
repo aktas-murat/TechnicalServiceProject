@@ -1,1 +1,31 @@
-﻿<h1>Rol Atamaları</h1>
+﻿@using TechnicalService.Web.ViewModels.Account
+@model List<UserRoleChangeViewModel>
+
+<h1>Rol Atamaları</h1>
+ <h3 class="pb-4">Kullanıcılar</h3>
+    <ul class="list-group">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item">
+                <div class="d-flex justify-content-between">
+                    <div class="row w-100">
+                        <span class="col-2">@item.Name</span>
+                        <span class="col-2">@item.SurName</span>
+                        <span class="col-2">@item.UserName</span>
+                        <span class="col-2 dropdown">
+                        <span class="col-2">
+                            @string.Join(",",item.Role.ToList())
+                        </span>
+                    </span>
+                         <span class="col-2 dropdown">
+                             <a asp-controller="Account" asp-action="ChangeRoles">
+                        <button class="btn btn-primary " type="button">
+                            Edit
+                        </button>
+                        </a>
+                    </span>
+
+                        
+                    </div>
+                    </li>
+        }
