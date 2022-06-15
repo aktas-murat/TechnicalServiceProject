@@ -1,14 +1,21 @@
+<<<<<<< HEAD
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TechnicalService.Core.Identity;
 using TechnicalService.Web.ViewModels;
 using TechnicalService.Web.ViewModels.Account;
+=======
+﻿using Microsoft.AspNetCore.Mvc;
+using TechnicalService.Core.Entities;
+using TechnicalService.Data.Data;
+>>>>>>> 51491bd9e436675244b862fe87347caced6742ef
 
 namespace TechnicalService.Web.Controllers
 {
 	public class AdminController : Controller
 	{
+<<<<<<< HEAD
 
 		private readonly UserManager<ApplicationUser> _userManager;
 
@@ -18,6 +25,10 @@ namespace TechnicalService.Web.Controllers
         }
 
 		public IActionResult AdminDashboard()
+=======
+        private readonly MyContext _context;
+        public IActionResult AdminDashboard()
+>>>>>>> 51491bd9e436675244b862fe87347caced6742ef
 		{
 			return View();
 		}
@@ -51,3 +62,35 @@ namespace TechnicalService.Web.Controllers
 
 
 		
+
+		public IActionResult AdminServiceDemands()
+        {
+            var model = from sd in _context.ServiceDemands
+                        join customer in _context.Users on sd.UserId equals customer.Id
+                        select (new ServiceDemand
+                        {
+                            UserId = sd.UserId,
+                            Address = sd.Address,
+                            BuildingNo = sd.BuildingNo,
+                            CreatedAt = sd.CreatedAt,
+                            DoorNo = sd.DoorNo,
+                            Email = sd.Email,
+                            Id = sd.Id,
+                            Message = sd.Message,
+                            Phone = sd.Phone,
+                            TechnicianId = sd.TechnicianId
+                            //StatusId = sd.StatusId
+
+
+                        });
+
+            //  model.ToList().ForEach(x =>
+            //{
+            //    var technician = _userManager.FindByIdAsync(x.TechnicianId);
+            //      //var customer =  _userManager.FindByIdAsync(x.UserId);
+            //  });
+
+            return View(model.ToList());
+        }
+    }
+}
